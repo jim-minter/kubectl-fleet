@@ -11,12 +11,9 @@ import (
 )
 
 var cmdMembers = &cobra.Command{
-	Use:                "members",
-	Short:              "members",
-	RunE:               members,
-	SilenceErrors:      true,
-	SilenceUsage:       true,
-	DisableFlagParsing: true,
+	Use:   "members",
+	Short: "members",
+	RunE:  members,
 }
 
 func init() {
@@ -24,18 +21,9 @@ func init() {
 }
 
 func members(cmd *cobra.Command, args []string) error {
-	err := cmd.Flags().Parse(args)
-	if err != nil {
-		return err
-	}
-
-	if help {
-		return cmd.Help()
-	}
-
 	ctx := cmd.Context()
 
-	err = validate(cmd.Flags())
+	err := validate(cmd.Flags())
 	if err != nil {
 		return err
 	}

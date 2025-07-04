@@ -53,33 +53,6 @@ used (i.e. see `az account show`).
 
 ### 1. Use kubectl against the Fleet hub
 
-Any kubectl command and options may be specified after writing `kubectl fleet
---resource-group mygroup --fleet-name myfleet`.
-
-```sh
-$ kubectl fleet --resource-group mygroup --fleet-name myfleet get namespaces
-$ kubectl fleet --resource-group mygroup --fleet-name myfleet get crps
-$ kubectl fleet --resource-group mygroup --fleet-name myfleet edit crp mycrp
-```
-
-etc.
-
-### 2. Use kubectl against a Fleet member
-
-To connect to a member instead of the hub, specify `--member-name member1`.
-
-```sh
-$ kubectl fleet --resource-group mygroup --fleet-name myfleet --member-name member1 get deployments -n mynamespace
-$ kubectl fleet --resource-group mygroup --fleet-name myfleet --member-name member1 edit namespace default
-```
-
-etc.
-
-### 3. Set kubectl context to the Fleet hub
-
-As writing `fleet --resource-group mygroup --fleet-name myfleet` gets tiring,
-you can use `kubectl fleet set-context`.
-
 ```sh
 $ kubectl fleet set-context --resource-group mygroup --fleet-name myfleet
 $ kubectl get namespaces
@@ -89,9 +62,9 @@ $ kubectl edit crp mycrp
 
 etc.
 
-### 4. Set kubectl context to a Fleet member
+### 2. Use kubectl against a Fleet member
 
-And `--member-name member1` works with `kubectl fleet set-context` too.
+To connect to a member instead of the hub, specify `--member-name member1`.
 
 ```sh
 $ kubectl fleet set-context --resource-group mygroup --fleet-name myfleet --member-name member1
@@ -101,7 +74,7 @@ $ kubectl edit namespace default
 
 etc.
 
-### 5. Easily switch between the Fleet hub and members
+### 3. Easily switch between the Fleet hub and members
 
 You can also omit parameters like `--resource-group mygroup --fleet-name
 myfleet` to switch easily between hub and member contexts.  Note that you need
@@ -122,7 +95,7 @@ $ kubectl fleet set-context --member-name ''                               # now
 
 etc.
 
-### 6. Easily remember what the names of the Fleet members are
+### 4. Easily remember what the names of the Fleet members are
 
 ```sh
 $ kubectl fleet members
